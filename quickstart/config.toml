@@ -1,5 +1,5 @@
 baseURL = "https://teach310.github.io/hugosample"
 languageCode = "en-us"
 title = "This is Title"
-theme = "ananke"
+theme = "learn"
 publishDir = "../docs"
