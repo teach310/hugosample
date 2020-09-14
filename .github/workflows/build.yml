@@ -17,7 +17,8 @@ jobs:
         ls
         git config --local user.email "okms310gmail.com"
         git config --local user.name "Github Action"
-        git commit -m "Generate By Github Action" -a
+        git add .
+        git commit -m "Generate By Github Action"
     - name: Push changes
       uses: ad-m/github-push-action@v0.5.0
       with:
