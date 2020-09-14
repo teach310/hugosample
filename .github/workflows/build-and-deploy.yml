@@ -10,14 +10,16 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Hugo
         run: docker-compose up
-      - name: file check
-        run: | 
-          ls
-          git status
-      - name: Publish
-        uses: netlify/actions/cli@master
+
+      # netlify-cli使ってデプロイ
+      - uses: actions/setup-node@v1
         with:
-          args: deploy --dir=./docs --prod
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }} 
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          node-version: 12.x
+      run: npx netlify-cli deploy --dir=./dist --prod --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --site ${{ secrets.NETLIFY_SITE_ID }} 
+      # - name: Publish
+      #   uses: netlify/actions/cli@master
+      #   with:
+      #     args: deploy --dir=./docs --prod
+      #   env:
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }} 
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

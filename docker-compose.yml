@@ -1,10 +1,10 @@
 version: '3'
 services:
-  build:
-    image: klakegg/hugo:0.74.3
-    volumes:
-      - ".:/src"
-    working_dir: /src/quickstart
+  # build:
+  #   image: klakegg/hugo:0.74.3
+  #   volumes:
+  #     - ".:/src"
+  #   working_dir: /src/quickstart
 
   # hugo:
   #   image: klakegg/hugo:0.74.3-ubuntu
@@ -25,3 +25,10 @@ services:
   #   ports:
   #     - "1313:1313"
   #   working_dir: /src/quickstart
+  node:
+    image: node:14.10
+    volumes: 
+      - .:/project
+    tty: true
+    working_dir: /project
+    command: bash
