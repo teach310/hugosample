@@ -12,16 +12,17 @@ jobs:
         run: docker-compose up
       - name: Check files
         run: |
+          cd quickstart/themes/learn
+          ls
+          cd ../../../
           cd docs
-          ls -a
+          ls
       - name: Commit files
         run: |
           git config --local user.email "okms310gmail.com"
           git config --local user.name "Github Action"
           git add .
           git commit -m "Generate By Github Action"
-
-      
       - name: Push changes
         uses: ad-m/github-push-action@v0.5.0
         with:
