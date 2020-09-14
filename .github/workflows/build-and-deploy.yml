@@ -3,37 +3,18 @@ name: Build Hugo and Publish on Netlify
 on: [push]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-# masterブランチをチェックアウト
+      # masterブランチをチェックアウト
       - uses: actions/checkout@v2
         with:
           submodules: true
       - name: Build Hugo
         run: docker-compose up
-      - name: Check files
-        run: |
-          cd quickstart/themes/learn
-          ls
-      - name: Commit files
-        run: |
-          git config --local user.email "okms310gmail.com"
-          git config --local user.name "Github Action"
-          git add .
-          git commit -m "Generate By Github Action"
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.5.0
+
+      # netlify-cli使ってデプロイ
+      - uses: actions/setup-node@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-  # deploy:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Publish
-  #       uses: netlify/actions/cli@master
-  #       with:
-  #         args: deploy --dir=docs --prod
-  #       env:
-  #         # NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }} 
-  #         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          node-version: '12'
+      - run: npx netlify-cli deploy --dir=docs --prod --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --site ${{ secrets.NETLIFY_SITE_ID }} 
