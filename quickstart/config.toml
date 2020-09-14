@@ -1,5 +1,10 @@
-baseURL = "https://teach310.github.io/hugosample"
+baseURL = ""
+relativeURLs = true
 languageCode = "en-us"
 title = "This is Title"
 theme = "learn"
 publishDir = "../docs"
+
+[params]
+  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  themeVariant = "blue"

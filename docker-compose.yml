@@ -11,8 +11,7 @@ services:
   #   volumes:
   #     - .:/src
   #   tty: true
-  #   entrypoint: bash # 上書き
-  #   command: bash
+  #   entrypoint: bash
   #   working_dir: /src
   #   ports:
   #     - "1313:1313"
@@ -25,3 +24,4 @@ services:
   #   tty: true
   #   ports:
   #     - "1313:1313"
+  #   working_dir: /src/quickstart
