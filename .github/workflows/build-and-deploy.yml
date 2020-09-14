@@ -8,14 +8,13 @@ jobs:
     steps:
 # masterブランチをチェックアウト
       - uses: actions/checkout@v2
+        with:
+          submodules: true
       - name: Build Hugo
         run: docker-compose up
       - name: Check files
         run: |
           cd quickstart/themes/learn
-          ls
-          cd ../../../
-          cd docs
           ls
       - name: Commit files
         run: |
