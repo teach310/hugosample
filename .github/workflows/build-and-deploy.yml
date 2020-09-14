@@ -12,6 +12,7 @@ jobs:
         run: docker-compose up
       - name: Commit files
         run: |
+          git status
           git config --local user.email "okms310gmail.com"
           git config --local user.name "Github Action"
           git commit -m "Generate By Github Action" -a
