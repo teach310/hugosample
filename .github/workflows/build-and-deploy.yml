@@ -8,6 +8,10 @@ jobs:
     steps:
 # masterブランチをチェックアウト
       - uses: actions/checkout@v2
+      - name: Clean docs
+        run: |
+          rm -rf docs
+          git status
       - name: Build Hugo
         run: docker-compose up
       - name: Commit files
@@ -15,6 +19,7 @@ jobs:
           git config --local user.email "okms310gmail.com"
           git config --local user.name "Github Action"
           git status
+          rm -rf docs
           git add .
           git commit -m "Generate By Github Action"
       - name: Push changes
@@ -28,7 +33,7 @@ jobs:
       - name: Publish
         uses: netlify/actions/cli@master
         with:
-          args: deploy --dir=docs --prod
+          args: deploy --dir=docs
         env:
           # NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }} 
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
