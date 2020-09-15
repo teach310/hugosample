@@ -1,12 +1,11 @@
-name: Build Hugo and Publish on Netlify
+name: manual-test
 
 on: 
   workflow_dispatch:
-    description: "手動ビルド"
     
 jobs:
   printInputs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-        echo "description ${{ github.event.inputs.description }}"
+        echo "hello manual"
