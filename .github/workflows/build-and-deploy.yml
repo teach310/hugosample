@@ -11,7 +11,7 @@ jobs:
       # masterブランチをチェックアウト
       - uses: actions/checkout@v2
         with:
-          ref: ${{ github.ref#refs/heads/ }}
+          ref: ${{ github.ref }}
           submodules: true
       - name: Build Hugo
         run: docker-compose up
