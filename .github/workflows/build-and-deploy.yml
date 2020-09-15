@@ -1,7 +1,9 @@
 name: Build Hugo and Publish on Netlify
 
-on: [push]
-
+on: 
+  workflow_dispatch:
+    description: "手動ビルド"
+    
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
