@@ -1,4 +1,4 @@
-name: manual
+name: Print Event
 
 on: 
   workflow_dispatch:
@@ -7,5 +7,4 @@ jobs:
   printInputs:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-        echo "hello manual"
+      - run: echo "hello manual"
