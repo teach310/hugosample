@@ -7,4 +7,4 @@ jobs:
   printInputs:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello manual"
+      - run: echo "branch name ${{ github.ref }}"
