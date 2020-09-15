@@ -10,4 +10,3 @@ jobs:
     steps:
       - run: |
         echo "description ${{ github.event.inputs.description }}"
-        echo "branch ${{ github.event.inputs.branch }}"
