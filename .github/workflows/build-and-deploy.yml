@@ -3,7 +3,7 @@ name: Build Hugo and Publish on Netlify
 on: 
   workflow_dispatch:
     description: "手動ビルド"
-    
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -11,6 +11,7 @@ jobs:
       # masterブランチをチェックアウト
       - uses: actions/checkout@v2
         with:
+          ref: ${{ github.ref#refs/heads/ }}
           submodules: true
       - name: Build Hugo
         run: docker-compose up
