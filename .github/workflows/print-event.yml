@@ -7,4 +7,4 @@ jobs:
   printInputs:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "branch name ${{ github.ref#refs/heads/ }}"
+      - run: echo "branch name ${ GITHUB_REF#refs/heads/ }"
