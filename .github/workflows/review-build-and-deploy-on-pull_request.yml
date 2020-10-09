@@ -1,12 +1,10 @@
-name: Build Hugo and Publish on Netlify
+name: Deploy on pull_request review
 
 on: 
-  workflow_dispatch:
-    inputs:
-      comment:
-        description: "コメント"
-        required: false
-        default: "手動ビルド"
+  pull_request:
+    branches: # 対象がreview
+      - review
+    types: [opened]
 
 jobs:
   build-and-deploy:
@@ -24,4 +22,4 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - run: npx netlify-cli deploy --dir=docs --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --site ${{ secrets.NETLIFY_SITE_ID }} 
+      - run: npx netlify-cli deploy --dir=docs --prod --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --site ${{ secrets.NETLIFY_SITE_ID }} 
