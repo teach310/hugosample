@@ -1,12 +1,10 @@
-name: Build Hugo and Publish on Netlify
+name: Deploy on pull_request review
 
 on: 
-  workflow_dispatch:
-    inputs:
-      comment:
-        description: "コメント"
-        required: false
-        default: "手動ビルド"
+  pull_request:
+    branches: # 対象がreview
+      - review
+    types: [opened]
 
 jobs:
   build-and-deploy:
