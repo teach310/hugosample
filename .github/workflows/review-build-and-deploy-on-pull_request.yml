@@ -4,7 +4,6 @@ on:
   pull_request:
     branches: # 対象がreview
       - review
-    types: [opened]
 
 jobs:
   build-and-deploy:
