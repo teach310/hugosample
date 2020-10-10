@@ -13,3 +13,7 @@ notifications
 featureで編集して
 reviewにプルリク
 確認したら、reviewにまーじされるよ。
+
+
+# うわあ
+初めての共同編集。
