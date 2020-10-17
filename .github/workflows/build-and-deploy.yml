@@ -1,4 +1,4 @@
-name: Build Hugo and Publish on Netlify
+name: Deploy Netlify
 
 on: 
   workflow_dispatch:
@@ -24,4 +24,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - run: npx netlify-cli deploy --dir=docs --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --site ${{ secrets.NETLIFY_SITE_ID }} 
+      - run: npx netlify-cli deploy --dir=docs --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --site ${{ secrets.NETLIFY_SITE_ID }} > res
+      # 通知
+      - name: notify success to slack
+        run: grep "URL:" res | echo {\"text\":\"Successful deploy on Netlify\\n${{ github.event.inputs.comment }}\\n`cat`\"} | curl -d @- ${{ secrets.SLACK_WEBHOOK_URL }}
+
