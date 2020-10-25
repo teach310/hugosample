@@ -1,25 +1,25 @@
-name: Show Properties sae
+name: Show Properties　sae
 
-on:
-    worlflow_dispatch:
-        inputs:
-            comment:
-                description: "コメント"
-                required: false
-                default: "手動ビルド"
+on: 
+  workflow_dispatch:
+    inputs:
+      comment:
+        description: "コメント"
+        required: false
+        default: "手動ビルド"
 
 jobs:
-    show-properties:
-        runs-on: ubuntu-latest
-        steps:
-        　- name: Show github properties
-            run: |
-             echo ${{ github.workflow }}
-             echo ${{ github.ref }}
-             echo ${{ github.sha }}
-         - name: Show secret properties
-            run: | 
-             echo ${{ secrets.SAMPLE }}
-        　- name: Show inputs properties
-            run: |
-             echo ${{ github.event.inputs.comment }}
+  show-properties:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show github properties
+        run: | 
+          echo ${{ github.workflow }}
+          echo ${{ github.ref }}
+          echo ${{ github.sha }}
+      - name: Show secret properties
+        run: | 
+          echo ${{ secrets.SAMPLE }}
+      - name: Show inputs properties
+        run: |
+          echo ${{ github.event.inputs.comment }}
