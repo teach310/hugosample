@@ -13,13 +13,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Show github Properties
-            run: |
+              run: |
                 echo ${{ github.workflow }}
                 echo ${{ github.ref }}
                 echo ${{ github.sha }}
             - name: Show secret Properties
-            run: |
+              run: |
                 echo ${{ secrets.SAMPLE }}
             - name: Show inputs Properties
-                run: |
+              run: |
                 echo ${{ github.event.inputs.comment }}
