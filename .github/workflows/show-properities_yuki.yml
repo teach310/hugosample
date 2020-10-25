@@ -1,4 +1,4 @@
-name: Shoe Properties yuki
+name: Show Properties yuki
 
 on:
     workflow_dispatch:
