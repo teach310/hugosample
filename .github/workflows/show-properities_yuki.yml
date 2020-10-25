@@ -1,0 +1,25 @@
+name: Shoe Properities yuki
+
+on:
+    workflow_dispatch:
+        inputs:
+            comment:
+                description: "コメント"
+                required: false
+                default: "手動ビルド"
+
+jobs:
+    show-properties:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Show github properities
+                run: |
+                    echo ${{ github.workflow }}
+                    echo ${{ github.ref }}
+                    echo ${{ github.sha }}
+            - name: Show secret properties
+                run: |
+                    echo ${{ secrets.SAMPLE }}
+            - name: Show inputs properties
+                run: |
+                    echo ${{ github.event.inputs.comment }}
