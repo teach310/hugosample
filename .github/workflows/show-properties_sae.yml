@@ -12,7 +12,7 @@ jobs:
     show-properties:
         runs-on: ubuntu-latest
         steps:
-            - names: Show github properties
+            - name: Show github properties
                 run:
                     echo ${{ github.workflow }}
                     echo ${{ github.ref }}
