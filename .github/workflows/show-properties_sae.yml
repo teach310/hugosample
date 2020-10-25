@@ -4,7 +4,7 @@ on:
     worlflow_dispatch:
         inputs:
             comment:
-                description:　"コメント"
+                description: "コメント"
                 required: false
                 default: "手動ビルド"
 
